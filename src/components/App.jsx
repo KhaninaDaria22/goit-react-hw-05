@@ -1,6 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
-// import MoviesDetails from '../pages/MoviesDetails';
 import MoviesPage from '../pages/MoviesPage';
 import NotFoundPages from '../pages/NotFoundPages';
 import MoviesDetails from '../pages/MoviesDetails';
@@ -12,11 +11,9 @@ import Toaster from 'react-hot-toast';
 export default function App() {
   return (
     <div>
-
-        <SharedLayout/>
-
         <Routes>
-          <Route path="/" element={<HomePage />}>
+          <Route path="/" element={<SharedLayout/>}>
+            <Route index element={<HomePage/>} />
             <Route path="movies" element={<MoviesPage />} />
             <Route path="*" element={<NotFoundPages/>}/>
         

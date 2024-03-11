@@ -12,8 +12,8 @@ const MoviesPage = () => {
 
 
     useEffect(() => {
-        const query = searchParams.get('query') ?? '';
-        if(!query) return;
+      const query = searchParams.get('query') || '';
+        if(!query.trim())return;
 
         const getMovie = async () => {
             try {
@@ -26,7 +26,7 @@ const MoviesPage = () => {
                     setMovies(result);
                 }
             }catch (error) {
-                error(error.message);
+                toast.error(error.message);
                 setMovies([]);
             }
         };
@@ -36,7 +36,7 @@ const MoviesPage = () => {
 
 
     const handleSubmit = query => {
-        setSearchParams({query});
+      setSearchParams('query', query);
     };
 
     return (
