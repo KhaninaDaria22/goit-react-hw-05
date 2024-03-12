@@ -17,13 +17,13 @@ const MoviesPage = () => {
 
         const getMovie = async () => {
             try {
-                const {result} = await fetchMovieByName(query);
+                const {results} = await fetchMovieByName(query);
 
-                if(result.length === 0) {
+                if(results.length === 0) {
                     toast.error('No movies found');
                     setMovies([]);
                 } else {
-                    setMovies(result);
+                    setMovies(results);
                 }
             }catch (error) {
                 toast.error(error.message);
@@ -36,7 +36,7 @@ const MoviesPage = () => {
 
 
     const handleSubmit = query => {
-      setSearchParams('query', query);
+      setSearchParams({ query });
     };
 
     return (

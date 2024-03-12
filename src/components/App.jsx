@@ -1,16 +1,19 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import HomePage from '../pages/HomePage';
-import MoviesPage from '../pages/MoviesPage';
-import NotFoundPages from '../pages/NotFoundPages';
-import MoviesDetails from '../pages/MoviesDetails';
-import Cast from "./Cast";
-import Reviews from "./Reviews";
-import SharedLayout from "./SharedLayout";
+import { lazy, Suspense } from 'react';
 import Toaster from 'react-hot-toast';
+
+const HomePage = lazy(() => import("../pages/HomePage"));
+const MoviesPage = lazy(() => import("../pages/MoviesPage"));
+const NotFoundPages = lazy(() => import("../pages/NotFoundPages"));
+const MoviesDetails = lazy(() => import("../pages/MoviesDetails"));
+const Cast = lazy(() => import("./Cast"));
+const Reviews = lazy(() => import("./Reviews"));
+const SharedLayout = lazy(() => import("./SharedLayout"));
 
 export default function App() {
   return (
     <div>
+      <Suspense fallback={<div>LOADING PAGE...</div>}>
         <Routes>
           <Route path="/" element={<SharedLayout/>}>
             <Route index element={<HomePage/>} />
@@ -25,6 +28,7 @@ export default function App() {
           </Route>
         </Routes>
         <Toaster />
+      </Suspense>
     </div>
   );
 }
