@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function MoviesList ({ trendingMovies }){
+export default function MovieList ({ trendingMovies }){
     return (
       <section>
         <h1>Trending today</h1>

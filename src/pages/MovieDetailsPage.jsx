@@ -4,7 +4,7 @@ import {fetchMovieById} from '../movies-api';
 import MovieCard from '../components/MovieCard';
 
 
-const MoviesDetails = () => {
+const MovieDetailsPage = () => {
     const {movieId} = useParams();
     const location = useLocation();
     const [selectedMovie, setSelectedMovie] = useState({});
@@ -39,4 +39,4 @@ const MoviesDetails = () => {
       );
 };
 
-export default MoviesDetails;
+export default MovieDetailsPage;

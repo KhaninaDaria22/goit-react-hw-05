@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {fetchTrendMovies} from '../movies-api';
-import MoviesList from '../components/MoviesList';
+import MovieList from '../components/MovieList';
 
 export default function HomePage() {
     const [trendingMovies, setTrendingMovies] = useState([]);
@@ -31,7 +31,7 @@ export default function HomePage() {
                     Sorry, we could not fetch the trending movies. Please try again later.
                 </h2>
             ) : (
-                <MoviesList trendingMovies={trendingMovies}/>
+                <MovieList trendingMovies={trendingMovies}/>
             )}
         </div>
     );

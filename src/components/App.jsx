@@ -5,24 +5,25 @@ import Toaster from 'react-hot-toast';
 const HomePage = lazy(() => import("../pages/HomePage"));
 const MoviesPage = lazy(() => import("../pages/MoviesPage"));
 const NotFoundPages = lazy(() => import("../pages/NotFoundPages"));
-const MoviesDetails = lazy(() => import("../pages/MoviesDetails"));
-const Cast = lazy(() => import("./Cast"));
-const Reviews = lazy(() => import("./Reviews"));
-const SharedLayout = lazy(() => import("./SharedLayout"));
+const MovieDetailsPage = lazy(() => import("../pages/MovieDetailsPage"));
+const MovieCast = lazy(() => import("./MovieCast"));
+const MovieReviews = lazy(() => import("./MovieReviews"));
+const Navigation = lazy(() => import("./Navigation"));
 
 export default function App() {
   return (
     <div>
+      
       <Suspense fallback={<div>LOADING PAGE...</div>}>
         <Routes>
-          <Route path="/" element={<SharedLayout/>}>
+            <Route path="/" element={<Navigation/>}>
             <Route index element={<HomePage/>} />
             <Route path="movies" element={<MoviesPage />} />
             <Route path="*" element={<NotFoundPages/>}/>
         
-            <Route path="movies/:movieId" element={<MoviesDetails />}>
-              <Route path="cast" element={<Cast />} />
-              <Route path="reviews" element={<Reviews />} />
+            <Route path="movies/:movieId" element={<MovieDetailsPage/>}>
+              <Route path="cast" element={<MovieCast/>} />
+              <Route path="reviews" element={<MovieReviews />} />
             </Route>
             <Route path="*" element={<Navigate to="/" />} />
           </Route>
